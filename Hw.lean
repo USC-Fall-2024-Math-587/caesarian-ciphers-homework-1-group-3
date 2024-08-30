@@ -81,12 +81,13 @@ For example, `shift 'A' 1` should return `'B'`.
 The modulo operator `%` may be your friend here. If you forget what codepoints
 correspond to which characters, try e.g. `#eval 'A'.toNat`.
 -/
+
 def Alphabet.shift (a : Alphabet) (n : Nat) : Alphabet :=
   -- We can declare local variables with `let`
-  let shifted : Nat := sorry -- fill this in with the correct natural number
+  let shifted : Nat := (((a.char.toNat + n - 65) % 26) + 65) -- fill this in with the correct natural number
   -- We can use `have` but the Lean only remembers the type and not the actual term
   -- `have`'s are useful for proofs
-  have valid : shifted.isValidChar := sorry -- `by omega` will work with the correct `shifted`
+  have valid : shifted.isValidChar :=  by omega--` will work with the correct `shifted`
   -- `omega` is a tactic that can solve linear arithmetic problemes for natural numbers and
   -- integers
   { char := Char.ofNatAux shifted valid,
@@ -95,7 +96,7 @@ def Alphabet.shift (a : Alphabet) (n : Nat) : Alphabet :=
       -- either from its database or provided by the user in the call
       change 65 ≤ shifted ∧ shifted ≤ 90 -- `change` attempts to change the goal to something that
       -- is definitionally equal to the current goal
-      sorry } -- finish this proof with `omega` when you have the correct `shifted`
+      omega } -- finish this proof with `omega` when you have the correct `shifted`
 
 /-
 Finally we encode our string by converting it to a list of `Alphabet` values, shifting
@@ -103,4 +104,3 @@ each one, and then converting the list back to a string.
 -/
 def encode (s : String) (n : Nat) : String :=
   toString (s.toAlphabetList.map fun a => a.shift n)
-
