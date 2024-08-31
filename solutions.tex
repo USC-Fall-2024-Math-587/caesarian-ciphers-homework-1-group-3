@@ -96,14 +96,23 @@ From there it was trivial to replace the few remaining letters with the only thi
 		
 	\item (1.5) Suppose that you have an alphabet of 26 letters.
 		\begin{enumerate}
-			\item  How many possible simple substitution ciphers are there?
+			\item  How many possible simple substitution ciphers are there? \newline 
+			$$26!$$\newline The total number of ciphers is the product of the number of ways we can map each letter. 
+			There are 26 ways we can remap A (yes, we can map it to itself), there are 25 ways to remap B given that we have mapped A, ect. This will include the mapping of the alphabet to the alphabet. If we don't want that, just subtract 1.
+			
 			\item  A letter in the alphabet is said to be fixed if the encryption of the letter is the
 				letter itself. How many simple substitution ciphers are there that leave:
+		
 			\begin{enumerate}
-				\item No letters fixed?
-				\item At least one letter fixed?
+				\item No letters fixed? 
+				$$25!$$ Following the logic in part (a), there 25 letters that we can map A to that aren't A, there are then 24 letters (other than B) that we can map B to, ect.
+				\item At least one letter fixed?  $$26! - 25!$$
+				This is the total number of ciphers minus the number that have 0 fixed (using the number from (i)).
 				\item Exactly one letter fixed?
+				$$26 \cdot 24!$$ We can pick 26 letters to be the fixed one. Then we can remap the second letter to 24 \emph{other} letters, the third to 23, the fourth to 22, ect.
 				\item At least two letters fixed?
+				$$26!-25!-26\cdot 24!$$ This is the total number of ciphers minus the number that have 0 fixed minus the number that have 1 fixed (using the numbers from (i) and (iii)).
+				
 			\end{enumerate}
 			(Part (b) is quite challenging! You might try doing the problem first with an alphabet 
 			of four or five letters to get an idea of what is going on.)
