@@ -137,8 +137,8 @@ From there it was trivial to replace the few remaining letters with the only thi
 				$$26 \cdot 25!\sum_{k=0}^{25}{(-1)^k/ k!} = 26!\sum_{k=0}^{25}{(-1)^k/ k!}$$
 				We can pick 26 letters to be the fixed one. Then we have to count the ways that the other 25 can be mapped with none of them fixed, which is like (i) but with 25 instead of 26.\\
 				\item At least two letters fixed?
-				$$26!- 26!\sum_{k=0}^{25}{(-1)^k/ k!} = 26!\sum_{k=1}^{25}{(-1)^{(k-1)}/ k!}$$
-				This is the total number of ciphers minus the number that have 0 fixed minus the number that have 1 fixed (using the numbers from (i) and (iii)).\\
+				$$26!\sum_{k=1}^{26}{(-1)^{(k-1)}/k!} - 26!\sum_{k=0}^{25}{(-1)^k/ k!} = 26!(\sum_{k=1}^{26}{(-1)^{(k-1)}/k!} - \sum_{k=0}^{25}{(-1)^k/ k!}) $$
+				This is the number of ciphers with at least one fixed minus the number with exactly one fixed (leaving the number with at least two fixed).\\
 				
 			\end{enumerate}
 			(Part (b) is quite challenging! You might try doing the problem first with an alphabet 
