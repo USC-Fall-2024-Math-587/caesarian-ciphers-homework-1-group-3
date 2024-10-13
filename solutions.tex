@@ -126,9 +126,9 @@ From there it was trivial to replace the few remaining letters with the only thi
 		
 			\begin{enumerate}
 				\item No letters fixed? 
-				\\ We will need to exclude all ciphers that leave at least one letter fixed. We can subtract the number that fix one letter: 26! - (26 choose 1)25! 
-				but because this includes the ciphers that fix 2 letters, counting each set of 2 letters twice, we need to add back in (26 choose 2)24! and because this includes
-				the ciphers that keep 3 letters fixed, we need to subtract (26 choose 3)23! and so on. 
+				\\ We will need to exclude all ciphers that leave at least one letter fixed. We can subtract the number that fix one letter: $26! - {26 \choose 1} 25!$ 
+				but because this includes the ciphers that fix 2 letters, counting each set of 2 letters twice, we need to add back in ${26 \choose 2}24!$ and because this includes
+				the ciphers that keep 3 letters fixed, we need to subtract ${26 \choose 3}23!$ and so on. 
 				Giving $\sum_{k=0}^{26}{(-1)^k * {26 \choose k}*(n-k)!}$ = $26!\sum_{k=0}^{26}{(-1)^k/ k!}$
 
 				\item At least one letter fixed?  $$26!\sum_{k=1}^{26}{(-1)^{(k-1)}/k!}$$
