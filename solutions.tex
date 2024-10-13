@@ -126,13 +126,19 @@ From there it was trivial to replace the few remaining letters with the only thi
 		
 			\begin{enumerate}
 				\item No letters fixed? 
-				$$25!$$ Following the logic in part (a), there 25 letters that we can map A to that aren't A, there are then 24 letters (other than B) that we can map B to, ect.\\
-				\item At least one letter fixed?  $$26! - 25!$$
-				This is the total number of ciphers minus the number that have 0 fixed (using the number from (i)).\\
+				\\ We will need to exclude all ciphers that leave at least one letter fixed. We can subtract the number that fix one letter: 26! - (26 choose 1)25! 
+				but because this includes the ciphers that fix 2 letters, counting each set of 2 letters twice, we need to add back in (26 choose 2)24! and because this includes
+				the ciphers that keep 3 letters fixed, we need to subtract (26 choose 3)23! and so on. 
+				Giving $\sum_{k=0}^{26}{(-1)^k * {26 \choose k}*(n-k)!}$ = $26!\sum_{k=0}^{26}{(-1)^k/ k!}$
+
+				\item At least one letter fixed?  $$26!\sum_{k=1}^{26}{(-1)^{(k-1)}/k!}$$
+				This is 26! - the sum from (i) by removing the k = 0 term (26!) and flipping the signs so it is now the ciphers fixing 1 - the ciphers fixing 2 double count etc. \\
 				\item Exactly one letter fixed?
-				$$26 \cdot 24!$$ We can pick 26 letters to be the fixed one. Then we can remap the second letter to 24 \emph{other} letters, the third to 23, the fourth to 22, ect.\\
+				$$26 \cdot 25!\sum_{k=0}^{25}{(-1)^k/ k!} = 26!\sum_{k=0}^{25}{(-1)^k/ k!}$$
+				We can pick 26 letters to be the fixed one. Then we have to count the ways that the other 25 can be mapped with none of them fixed, which is like (i) but with 25 instead of 26.\\
 				\item At least two letters fixed?
-				$$26!-25!-26\cdot 24!$$ This is the total number of ciphers minus the number that have 0 fixed minus the number that have 1 fixed (using the numbers from (i) and (iii)).\\
+				$$26!- 26!\sum_{k=0}^{25}{(-1)^k/ k!} = 26!\sum_{k=1}^{25}{(-1)^{(k-1)}/ k!}$$
+				This is the total number of ciphers minus the number that have 0 fixed minus the number that have 1 fixed (using the numbers from (i) and (iii)).\\
 				
 			\end{enumerate}
 			(Part (b) is quite challenging! You might try doing the problem first with an alphabet 
